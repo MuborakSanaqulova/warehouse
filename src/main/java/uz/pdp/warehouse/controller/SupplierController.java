@@ -8,38 +8,39 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import uz.pdp.warehouse.common.Result;
 import uz.pdp.warehouse.entity.Client;
-import uz.pdp.warehouse.service.ClientService;
+import uz.pdp.warehouse.entity.Supplier;
+import uz.pdp.warehouse.service.SupplierService;
 
 @RestController
-@RequestMapping("/client")
-public class ClientController {
+@RequestMapping("/supplier")
+public class SupplierController {
 
     @Autowired
-    ClientService clientService;
+    SupplierService supplierService;
 
     @PostMapping
-    public Result post(@RequestBody Client client){
-        return clientService.post(client);
+    public Result post(@RequestBody Supplier supplier){
+        return supplierService.post(supplier);
     }
 
     @GetMapping
-    public Page<Client> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
-        return clientService.getAll(pageable);
+    public Page<Supplier> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+        return supplierService.getAll(pageable);
     }
 
     @GetMapping("/{id}")
     public Result findOne(@PathVariable Integer id){
-        return clientService.findOne(id);
+        return supplierService.findOne(id);
     }
 
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id){
-        return clientService.delete(id);
+        return supplierService.delete(id);
     }
 
     @PutMapping("/{id}")
-    public Result edit(@PathVariable Integer id, @RequestBody Client client){
-        return clientService.edit(id, client);
+    public Result edit(@PathVariable Integer id, @RequestBody Supplier supplier){
+        return supplierService.edit(id, supplier);
     }
 
 }

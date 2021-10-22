@@ -9,18 +9,21 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"warehouse_id", "supplier_id", "date"}))
 public class Input {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDate date;
+    private LocalDateTime date;
 
     @ManyToOne
     private Warehouse warehouse;
@@ -35,5 +38,5 @@ public class Input {
     private String factureNumber;
 
     @JsonIgnore
-    private String code;
+    private String code = UUID.randomUUID().toString();
 }

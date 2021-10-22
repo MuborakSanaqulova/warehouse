@@ -13,7 +13,6 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
 public class Attachment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
