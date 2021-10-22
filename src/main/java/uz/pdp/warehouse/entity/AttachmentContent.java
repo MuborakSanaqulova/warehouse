@@ -13,9 +13,9 @@ import javax.persistence.*;
 public class AttachmentContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
-    private byte[] bytes;
+    private byte[] mainContent;
 
     @OneToOne
     private Attachment attachment;

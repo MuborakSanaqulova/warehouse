@@ -18,7 +18,7 @@ public class Attachment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+    private String originalName;
 
     private long size;
 

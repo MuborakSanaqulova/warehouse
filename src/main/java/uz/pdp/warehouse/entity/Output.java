@@ -1,12 +1,15 @@
 package uz.pdp.warehouse.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -18,13 +21,13 @@ public class Output {
     private Integer id;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDate date;
+    private LocalDateTime date;
 
     @ManyToOne
     private Warehouse warehouse;
 
-    @ManyToOne
-    private Supplier supplier;
+    @JsonIgnore
+    private String code = UUID.randomUUID().toString();
 
     @Column(nullable = false)
     private String factureNumber;

@@ -16,7 +16,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"warehouse_id", "supplier_id", "date"}))
 public class Input {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

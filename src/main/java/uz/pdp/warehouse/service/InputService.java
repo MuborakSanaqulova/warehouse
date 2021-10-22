@@ -83,8 +83,34 @@ public class InputService {
         }
         return new Result("not found", false);
     }
-//
-//    public Result edit(Integer id, InputDto inputDto) {
-//
-//    }
+
+    public Result edit(Integer id, InputDto inputDto) {
+
+        Optional<Input> optionalInput = inputRepository.findById(id);
+        if (!optionalInput.isPresent()){
+            return new Result("input not found", false);
+        }
+
+        Optional<Supplier> bySupplierId = supplierRepository.findById(inputDto.getSupplierId());
+        if (!bySupplierId.isPresent())
+            return new Result("supplier not found", false);
+
+        Optional<Warehouse> byWarehouseId = warehouseRepository.findById(inputDto.getWarehouseId());
+        if (!byWarehouseId.isPresent())
+            return new Result("warehouse not found", false);
+
+        Optional<Currency> byCurrencyId = currencyRepository.findById(inputDto.getCurrencyId());
+        if (!byCurrencyId.isPresent())
+            return new Result("currency not found", false);
+
+        Input input = new Input();
+        input.setId(id);
+        input.setCurrency(byCurrencyId.get());
+        input.setSupplier(bySupplierId.get());
+        input.setWarehouse(byWarehouseId.get());
+        input.setFactureNumber(inputDto.getFactureNumber());
+        inputRepository.save(input);
+
+        return new Result("saved",true);
+    }
 }

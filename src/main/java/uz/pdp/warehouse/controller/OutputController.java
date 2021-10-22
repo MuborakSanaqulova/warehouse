@@ -8,41 +8,41 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import uz.pdp.warehouse.common.Result;
 import uz.pdp.warehouse.entity.Input;
-import uz.pdp.warehouse.entity.Supplier;
+import uz.pdp.warehouse.entity.Output;
 import uz.pdp.warehouse.payload.InputDto;
-import uz.pdp.warehouse.service.InputService;
+import uz.pdp.warehouse.payload.OutputDto;
+import uz.pdp.warehouse.service.OutputService;
 
 @RestController
-@RequestMapping("/input")
-public class InputController {
+@RequestMapping("/output")
+public class OutputController {
 
     @Autowired
-    InputService inputService;
+    OutputService outputService;
 
     @PostMapping
-    public Result post(@RequestBody InputDto inputDto){
-        return inputService.post(inputDto);
+    public Result post(@RequestBody OutputDto outputDto){
+        return outputService.post(outputDto);
     }
 
     @GetMapping
-    public Page<Input> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
-        return inputService.getAll(pageable);
+    public Page<Output> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+        return outputService.getAll(pageable);
     }
 
     @GetMapping("/{id}")
     public Result findOne(@PathVariable Integer id){
-        return inputService.findOne(id);
+        return outputService.findOne(id);
     }
 
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id){
-        return inputService.delete(id);
+        return outputService.delete(id);
     }
 
     @PutMapping("/{id}")
-    public Result edit(@PathVariable Integer id, @RequestBody InputDto inputDto){
-        return inputService.edit(id, inputDto);
+    public Result edit(@PathVariable Integer id, @RequestBody OutputDto outputDto){
+        return outputService.edit(id, outputDto);
     }
-
 
 }

@@ -3,11 +3,9 @@ package uz.pdp.warehouse.payload;
 import lombok.Data;
 
 @Data
-public class InputDto {
-
+public class OutputDto {
     private Integer currencyId;
     private Integer warehouseId;
-    private Integer supplierId;
+    private Integer clientId;
     private String factureNumber;
-
 }
