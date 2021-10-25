@@ -11,6 +11,7 @@ import uz.pdp.warehouse.repository.InputProductRepository;
 import uz.pdp.warehouse.repository.InputRepository;
 import uz.pdp.warehouse.repository.ProductRepository;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -36,6 +37,7 @@ public class InputProductService {
             return new Result("product not found", false);
 
         InputProduct inputProduct = new InputProduct();
+        inputProduct.setExpireDate(LocalDate.parse(inputProductDto.getExpireDate()));
         inputProduct.setAmount(inputProductDto.getAmount());
         inputProduct.setPrice(inputProductDto.getPrice());
         inputProduct.setInput(inputOptional.get());
@@ -88,6 +90,7 @@ public class InputProductService {
 
         InputProduct inputProduct = new InputProduct();
         inputProduct.setId(id);
+        inputProduct.setExpireDate(LocalDate.parse(inputProductDto.getExpireDate()));
         inputProduct.setAmount(inputProductDto.getAmount());
         inputProduct.setPrice(inputProductDto.getPrice());
         inputProduct.setInput(inputOptional.get());

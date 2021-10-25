@@ -132,4 +132,8 @@ public class ProductService {
         productRepository.save(product);
         return new Result("successfully edited", true);
     }
+
+    public void deleteByCategoryId(Integer id){
+        productRepository.deleteByCategoryQuery(id);
+    }
 }
