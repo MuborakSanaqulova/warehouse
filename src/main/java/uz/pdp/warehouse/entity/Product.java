@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -31,6 +32,6 @@ public class Product {
     private Measurement measurement;
 
     @JsonIgnore
-    private String code;
+    private String code= UUID.randomUUID().toString();
 
 }
