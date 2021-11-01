@@ -26,7 +26,7 @@ public class InputProduct {
 
     private double price;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate expireDate;
 
     @ManyToOne
